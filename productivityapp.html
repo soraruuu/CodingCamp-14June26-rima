@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity</title>
+</head>
+<body>
+    <h1></h1>
+    <style>
+        #clock {
+            font-size: 48px;     /* Mengatur ukuran font */
+            font-weight: bold;    /* Membuat teks tebal */
+            font-family: Arial, sans-serif; /* Mengubah jenis font agar lebih modern */
+            color: #333;          /* Memberikan warna teks */
+        }
+    </style>
+    <div id="clock"></div>
+
+    <script>
+        function updateClock() {
+            let date = new Date();
+            let clock = document.getElementById('clock');
+            clock.innerHTML = 
+                date.getHours() + ":" + 
+                date.getMinutes() + ":" + 
+                date.getSeconds();
+        }
+
+        // Memanggil fungsi setiap 1000 milidetik (1 detik)
+        setInterval(updateClock, 1000);
+        
+        // Panggil sekali agar jam langsung muncul saat halaman dimuat
+        updateClock();
+    </script>
+</body>
+
+</head>
+<title>Productivity Dashboard</title>
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-align: center; 
+            margin-top: 60px; 
+            background-color: #f9f9f9;
+        }
+        #clock { 
+            font-size: 65px; 
+            font-weight: bold; 
+            color: #222;
+            margin-bottom: 5px; 
+        }
+        #date { 
+            font-size: 20px; 
+            color: #666; 
+            margin-bottom: 20px; 
+        }
+        #greeting { 
+            font-size: 26px; 
+            color: #444; 
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="clock"></div>
+    <div id="date"></div>
+    <div id="greeting"></div>
+
+    <script>
+        function updateDashboard() {
+            let now = new Date();
+            
+            // 1. Jalankan Jam
+            let hours = String(now.getHours()).padStart(2, '0');
+            let minutes = String(now.getMinutes()).padStart(2, '0');
+            let seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').innerHTML = `${hours}:${minutes}:${seconds}`;
+
+            // 2. Jalankan Tanggal
+            let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('date').innerHTML = now.toLocaleDateString('en-US', options);
+
+            // 3. Jalankan Sapaan
+            let greeting = "";
+            let h = now.getHours();
+            if (h >= 5 && h < 12) {
+                greeting = "Good morning!";
+            } else if (h >= 12 && h < 18) {
+                greeting = "Good afternoon!";
+            } else {
+                greeting = "Good evening!";
+            }
+            document.getElementById('greeting').innerHTML = greeting;
+        }
+
+        // Eksekusi real-time
+        setInterval(updateDashboard, 1000);
+        updateDashboard();
+    </script>
+</body>
+</html>
