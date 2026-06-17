@@ -1,8 +1,11 @@
+/* ==========================================================================
+   1. Pengaturan Dasar & Reset
+   ========================================================================== */
 body { 
     font-family: 'Plus Jakarta Sans', sans-serif;
     margin: 0;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #cfe3f1 10%, #8fb6d8 90%);
+    padding: 20px 15px; /* Padding dikecilkan agar ramah layar HP */
+    background: linear-gradient(135deg, #cfe3f1 10%, #8fb6d8 90%); /* Warna biru pilihanmu */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -10,6 +13,15 @@ body {
     color: #1a1a1a;
     box-sizing: border-box;
 }
+
+/* Biar padding tidak merusak ukuran asli kotak */
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   2. Wadah Utama & Kartu Putih
+   ========================================================================== */
 .dashboard-container {
     width: 100%;
     max-width: 500px;
@@ -17,33 +29,135 @@ body {
     flex-direction: column;
     gap: 20px;
 }
+
 .card {
     background: #ffffff;
     border-radius: 16px;
     padding: 24px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
+
+/* ==========================================================================
+   3. Panel Jam & Judul
+   ========================================================================== */
 .header-card { text-align: center; }
-#clock { font-size: 54px; font-weight: 700; color: #6a90b1; margin: 0 0 5px 0; }
+
+#clock { 
+    font-size: 54px; 
+    font-weight: 700; 
+    color: #6a90b1; /* Biru jam pilihanmu */
+    margin: 0 0 5px 0; 
+    font-variant-numeric: tabular-nums;
+}
+
 #date { font-size: 16px; color: #666; margin: 0 0 15px 0; }
 #greeting { font-size: 24px; color: #222; font-weight: 700; margin: 0; }
 .card-title { font-size: 20px; font-weight: 700; color: #222; margin: 0 0 15px 0; }
+
+/* ==========================================================================
+   4. Panel Timer
+   ========================================================================== */
 .timer-card { text-align: center; }
-#timer-display { font-size: 64px; font-weight: 500; color: #6a90b1; margin-bottom: 20px; }
+#timer-display { 
+    font-size: 64px; 
+    font-weight: 500; 
+    color: #6a90b1; /* Biru timer pilihanmu */
+    margin-bottom: 20px; 
+    font-variant-numeric: tabular-nums;
+}
 .button-group { display: flex; justify-content: center; gap: 10px; }
-button { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 600; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+
+/* ==========================================================================
+   5. Tombol & Group Input (Diperbaiki untuk HP)
+   ========================================================================== */
+button { 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+    font-size: 14px; 
+    font-weight: 600; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: all 0.2s; 
+}
+
 .btn-primary { background-color: #8fb6d8; color: white; }
-.btn-primary:hover { background-color: #8fb6d8; }
+.btn-primary:hover { background-color: #7aa1c2; } /* Sedikit digelapkan saat di-hover */
+
 .btn-secondary { background-color: #e5e7eb; color: #4b5563; }
 .btn-secondary:hover { background-color: #d1d5db; }
+
 .btn-danger { background-color: #fee2e2; color: #ef4444; font-size: 12px; padding: 6px 12px; }
-.input-group { display: flex; gap: 8px; margin-bottom: 20px; }
-.input-group input { flex: 1; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 8px; outline: none; }
+
+/* Membuat inputan bertumpuk vertikal secara otomatis di layar HP agar longgar */
+.input-group { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 8px; 
+    margin-bottom: 20px; 
+}
+
+.input-group input { 
+    width: 100%; 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+    font-size: 14px; 
+    padding: 10px 14px; 
+    border: 1px solid #d1d5db; 
+    border-radius: 8px; 
+    outline: none; 
+}
+
+/* ==========================================================================
+   6. Panel To-Do List
+   ========================================================================== */
 .task-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
 .task-item { display: flex; align-items: center; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid #f3f4f6; }
-.task-left { display: flex; align-items: center; gap: 12px; flex: 1; }
+.task-left { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
 .task-text { font-size: 15px; color: #374151; word-break: break-all; }
 .task-text.completed { text-decoration: line-through; color: #9ca3af; }
-.links-container { display: flex; flex-wrap: wrap; gap: 10px; }
-.link-btn { display: inline-flex; align-items: center; background-color: #8fb6d8; color: white; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; cursor: pointer; }
-.link-delete-icon { margin-left: 10px; font-size: 16px; font-weight: bold; color: rgba(255, 255, 255, 0.6); }
+
+/* ==========================================================================
+   7. Panel Quick Links (Solusi Sempit & Desak-desakan)
+   ========================================================================== */
+.links-container { 
+    display: flex; 
+    flex-wrap: wrap; /* Tombol otomatis turun ke baris baru jika tidak muat */
+    gap: 10px; 
+    width: 100%;
+}
+
+.link-btn { 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: space-between; /* Memberi jarak aman teks dengan tanda silang (x) */
+    background-color: #8fb6d8; /* Biru tombol pilihanmu */
+    color: white; 
+    padding: 8px 12px; /* Disesuaikan agar pas di resolusi HP */
+    border-radius: 8px; 
+    text-decoration: none; 
+    font-size: 14px; 
+    font-weight: 500; 
+    cursor: pointer; 
+    min-width: 95px; /* Mengunci lebar minimal tombol agar tidak melosot */
+}
+
+.link-delete-icon { 
+    margin-left: 8px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    color: rgba(255, 255, 255, 0.6); 
+}
+
+/* ==========================================================================
+   8. Media Queries (Agar saat di Laptop tampilannya melebar horizontal)
+   ========================================================================== */
+@media (min-width: 480px) {
+    body {
+        padding: 40px 20px;
+    }
+    /* Inputan kembali berjejer ke samping secara rapi saat layar longgar/PC */
+    .input-group {
+        flex-direction: row;
+    }
+}
