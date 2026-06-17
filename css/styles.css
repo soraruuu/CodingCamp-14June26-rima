@@ -1,0 +1,49 @@
+body { 
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #cfe3f1 10%, #8fb6d8 90%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #1a1a1a;
+    box-sizing: border-box;
+}
+.dashboard-container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.header-card { text-align: center; }
+#clock { font-size: 54px; font-weight: 700; color: #6a90b1; margin: 0 0 5px 0; }
+#date { font-size: 16px; color: #666; margin: 0 0 15px 0; }
+#greeting { font-size: 24px; color: #222; font-weight: 700; margin: 0; }
+.card-title { font-size: 20px; font-weight: 700; color: #222; margin: 0 0 15px 0; }
+.timer-card { text-align: center; }
+#timer-display { font-size: 64px; font-weight: 500; color: #6a90b1; margin-bottom: 20px; }
+.button-group { display: flex; justify-content: center; gap: 10px; }
+button { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 600; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+.btn-primary { background-color: #8fb6d8; color: white; }
+.btn-primary:hover { background-color: #8fb6d8; }
+.btn-secondary { background-color: #e5e7eb; color: #4b5563; }
+.btn-secondary:hover { background-color: #d1d5db; }
+.btn-danger { background-color: #fee2e2; color: #ef4444; font-size: 12px; padding: 6px 12px; }
+.input-group { display: flex; gap: 8px; margin-bottom: 20px; }
+.input-group input { flex: 1; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 8px; outline: none; }
+.task-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.task-item { display: flex; align-items: center; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid #f3f4f6; }
+.task-left { display: flex; align-items: center; gap: 12px; flex: 1; }
+.task-text { font-size: 15px; color: #374151; word-break: break-all; }
+.task-text.completed { text-decoration: line-through; color: #9ca3af; }
+.links-container { display: flex; flex-wrap: wrap; gap: 10px; }
+.link-btn { display: inline-flex; align-items: center; background-color: #8fb6d8; color: white; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; cursor: pointer; }
+.link-delete-icon { margin-left: 10px; font-size: 16px; font-weight: bold; color: rgba(255, 255, 255, 0.6); }
